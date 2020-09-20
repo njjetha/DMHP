@@ -14,18 +14,18 @@ const routerOptions: ExtraOptions = {
 };
 
 const routes: Routes = [
-  {path:"home", component:NavBarTopComponent,canActivate: [AuthGuard], children:[
-    {path:"operations/:year/:sideNavOption",component:OperationalHomeComponent},
-    {path:"performance/:year",component:GroupMenuComponent}
+  {path: 'home', component: NavBarTopComponent, canActivate: [AuthGuard], children: [
+    {path: 'operations/:year/:sideNavOption', component: OperationalHomeComponent},
+    {path: 'performance/:year', component: GroupMenuComponent}
   ]},
 
-  {path:"",component:LoginComponent},  
-  {path:"login",component:LoginComponent},
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload',anchorScrolling: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload', anchorScrolling: 'enabled'})],
   exports: [RouterModule]
-})  
+})
 export class AppRoutingModule { }

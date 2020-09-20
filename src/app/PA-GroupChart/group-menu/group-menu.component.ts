@@ -4,7 +4,7 @@ import { GroupedLineChartService } from '../Service/grouped-line-chart.service'
 import { GroupedPieChartCasesService } from '../Service/grouped-pie-chart-cases.service';
 import { GroupedPieChartExpenseService } from '../Service/grouped-pie-chart-expense.service';
 import { GroupedPieChartTainingService } from '../Service/grouped-pie-chart-training.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-group-menu',
@@ -16,7 +16,7 @@ export class GroupMenuComponent implements OnInit, AfterViewInit {
   toggleValue_Sort: string;
   public checkedCumulative: boolean;
   public year;
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,public router: Router,
               public menuBarService: GroupedBarChartService,
               public menuLineService: GroupedLineChartService,
               public pieChartCasesService: GroupedPieChartCasesService,
@@ -57,9 +57,10 @@ export class GroupMenuComponent implements OnInit, AfterViewInit {
   }
 
   onYearChange(year: number) {
-
-
-    const routeURL = '/home/performance/'+ year;
-    window.location.href = routeURL;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/home/performance/' + year]);
+    });
+    // const routeURL = '/home/performance/'+ year;
+    // window.location.href = routeURL;
   }
 }

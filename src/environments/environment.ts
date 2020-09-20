@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-    backendIP : 'http://15.207.104.52:3000'
+    backendIP : 'http://15.207.104.52:3000',
+    projectUrl: 'http://15.207.104.52/DMHP/#/'
     // backendIP: "http://localhost:",
 };
 

@@ -19,6 +19,10 @@ export class NavBarTopComponent implements OnInit {
     this.isLoaded = true
   }
 
+  Operations(year){
+     this.router.navigate(['/operations/' + year + '1']);
+  }
+
   Capture() {
 
     //let element = document.querySelector("#"+"this.dataType");

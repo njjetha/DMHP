@@ -102,7 +102,7 @@ app.use(expressJwt({secret: 'dmhp-app-super-shared-secret'}).unless({path: ['/ap
 app.post("/api/auth",(req,res)=>{
   const body = req.body;
   const user  = USERS.find(user=>user.username== body.username);
-  if(!user || body.password!='Test@123') 
+  if(!user || body.password!='dmhp@2020') 
   {
     return res.sendStatus(401);
   }
