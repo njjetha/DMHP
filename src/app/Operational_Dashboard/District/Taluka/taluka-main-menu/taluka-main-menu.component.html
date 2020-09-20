@@ -1,0 +1,12 @@
+<div class="col-md-2">    
+    <strong>Select District</strong>
+    <select ngModel class="form-control" name="districtId" [(ngModel)]='districtName'
+        (ngModelChange)='onDistrictSelect($event)'>
+        <option *ngFor="let dist of districts " value={{dist}}>
+            {{dist}}
+        </option>
+    </select>
+</div>
+
+
+<app-menu [menuService]="talukaService"></app-menu> 

@@ -1,0 +1,94 @@
+<mat-card class="pt-3">
+    <mat-card-header>
+        <mat-card-title>
+            Across {{xColumn}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{xColumn}} v {{dataType}}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <div id="capture" class="d-flex bd-highlight mb-3">
+            <div class="mr-auto p-2 bd-highlight">
+                <div style="float:left">
+                    <mat-button-toggle-group #granularityGroup="matButtonToggleGroup" [(value)]="granularChoosen"
+                        (change)="onToggleChange_Granularity(granularityGroup.value)">
+                        <mat-button-toggle *ngFor="let item of toggleOptions_Granularity;let in = index" [value]="in">
+                            {{item}}
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <div *ngIf="granularChoosen==1" style="float:left; padding-left: 5;">
+                    <div class="pl-5" style="float:left;"><strong>Month <br></strong>{{monthName}}</div>
+                    <div class="pl-5" style="float:left;">
+                        <mat-slider class="pl-5" color="primary" #slider min="1" max="12" step="1" value="1"
+                            tickInterval="1" thumbLabel="thumbLabel" (input)="onMonthChange($event)"
+                            style="width: 400px;">
+                        </mat-slider>
+                    </div>
+                </div>
+                <div *ngIf="granularChoosen==2" style="float:left; padding-left: 5;">
+                    <div class="pl-5" style="float:left;"><strong>Quarter <br></strong>{{quarterChoosen}}</div>
+                    <div class="pl-5" style="float:left;">
+                        <mat-slider class="pl-5" color="primary" #slider min="1" max="4" step="1" value="1"
+                            tickInterval="1" thumbLabel="thumbLabel" (input)="onQuarterChange($event)"
+                            style="width: 200px;"></mat-slider>
+                    </div>
+                </div>
+
+            </div>
+            <!--div style="float:left; padding-left: 5;">
+                <div class="pl-5" style="float:left;"><strong>Year <br></strong>{{yearChoosen}}</div>
+                <div class="pl-5" style="float:left;">
+                    <mat-slider class="pl-5" color="primary" #slider min="2018" max="2019" step="1" value="2018"
+                        tickInterval="1" thumbLabel="thumbLabel" (input)="onYearChange($event)"
+                        style="width: 200px;"></mat-slider>
+                </div>
+            </div-->
+
+            <div class="p-3 bd-highlight">
+                <mat-slide-toggle color="primary" [disabled]="normalizeDisabled" [(ngModel)]="checkedNormalize"
+                    (change)="onNormaliseChange()">
+                    Normalize wrt population
+                </mat-slide-toggle>
+            </div>
+            <div class="p-2 bd-highlight">
+                <button mat-button color="primary" (click)="viewTable()">
+                    <mat-icon>view_module</mat-icon> View in table
+                </button>
+            </div>
+
+        </div>
+
+        <div class="pl-5 pr-5 ">
+            <div class="row border border-light">
+                <!--Map-->
+                <div class="col-md-4">
+                    <strong>Year - {{yearChoosen}}</strong>
+                    <strong *ngIf="granularChoosen==1" class="pl-3">Month - {{monthName}}</strong>
+                    <strong *ngIf="granularChoosen==2" class="pl-3">Qaurter - {{quarterChoosen}}</strong>
+                    <app-map-info [mapService]="menuService"></app-map-info>
+                </div>
+
+                <!--Bar Chart-->
+                <div class="col-md-8">
+                    <!--strong style="float: right;">Select type of cases</strong-->
+                    <strong>Year - {{yearChoosen}}</strong>
+                    <strong *ngIf="granularChoosen==1" class="pl-3">Month - {{monthName}}</strong>
+                    <strong *ngIf="granularChoosen==2" class="pl-3">Qaurter - {{quarterChoosen}}</strong>
+                    <app-stacked-bar-chart [chartService]="menuService">
+                    </app-stacked-bar-chart>
+                    Sort by
+                    <mat-button-toggle-group #sortGroup="matButtonToggleGroup" [(value)]="toggleValue_Sort"
+                        (change)="onToggleChange_Sort(sortGroup.value)">
+                        <mat-button-toggle *ngFor="let item of toggleOptions_Sort;let in = index" [value]="in">
+                            {{item}}
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

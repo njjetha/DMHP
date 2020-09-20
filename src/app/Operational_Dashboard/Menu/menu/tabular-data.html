@@ -1,0 +1,24 @@
+<!--Modal content-->
+<mat-dialog-content>
+    <table class="table" id="excel-table">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">{{xColumn}}</th>
+                <th scop="col" *ngFor="let col of columns;">{{col}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of data;let in = index;">
+                <th scope="row">{{in+1}}</th>
+                <td>{{d[xColumn]}}</td>
+                <td *ngFor="let col of columns;">{{d[col]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>
+
+
+<mat-dialog-actions class="p-3">
+    <button mat-flat-button color="primary"  (click)="onClickDownload()" ><mat-icon>save_alt</mat-icon> Download as CSV</button>
+</mat-dialog-actions>

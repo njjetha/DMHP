@@ -1,0 +1,6 @@
+<div class="mr-auto" style="float: right; padding-bottom: 20px; padding-right: 20px;">
+    <mat-slide-toggle color="primary" [disabled]="populationDisabled" [(ngModel)]="checkedPopulationLine" (change)="onPopulationLineChange()">
+        Show Population Line
+    </mat-slide-toggle>
+</div>
+<div #chart id="chart-area"></div>

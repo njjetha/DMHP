@@ -1,0 +1,56 @@
+<mat-sidenav-container style="padding-top: 4%;">
+  <mat-sidenav #sidenav mode="side" [mode]="mode.value" opened="true" class="sidenav" [(opened)]="opened"
+    (opened)="events.push('open!')" (closed)="events.push('close!')"
+    style="background-color : 	#3b4147; width: 250px;  position: fixed; padding-top: 4%; ">
+    <div class="pt-5"><button class="btn btn-light side-nav-button" (click)="onSideNavClick(1)">Patient Count </button>
+    </div>
+    <div><button class="btn btn-light side-nav-button" (click)="onSideNavClick(2)">Expense </button></div>
+    <div><button class="btn btn-light side-nav-button" (click)="onSideNavClick(3)">Training </button></div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p><button mat-button (click)="sidenav.toggle()"><mat-icon>dehaze</mat-icon> Menu</button></p>
+    <!--nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DMHP : Operational Dashboard</a>
+    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="#Cards">Summary</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Patient">Patient</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Expense">Expense</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#Training">Training</a>
+      </li>
+      <div class="topnav-right">
+        <a class="nav-link" href="#" (click)="Capture()">
+          <img src="/assets/came-icon.png" alt="" height="25" width="30"> Screenshot</a>
+    </div>
+    </ul>
+  </nav-->
+    <div class="col mx-auto" style="width:150px">
+      <strong>Select Year</strong>
+      <select ngModel class="form-control" name="year" [(ngModel)]='year'
+      (ngModelChange)='onYearChange($event)'>
+        <option value=2018>2018</option>
+        <option value=2019>2019</option>
+      </select>
+    </div>
+    
+    <div *ngIf="sideNavOption==1" id="Patient" class="container-fluid p-3">
+      <app-district-main-menu [year]="year"></app-district-main-menu>
+    </div>
+
+    <div *ngIf="sideNavOption==2" id="Expense" class="container-fluid p-3">
+      <app-district-expense-main-menu [year]="year"></app-district-expense-main-menu>
+    </div>
+    <div *ngIf="sideNavOption==3" id="Training" class="container-fluid p-3">
+      <app-district-training-main-menu [year]="year"></app-district-training-main-menu>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

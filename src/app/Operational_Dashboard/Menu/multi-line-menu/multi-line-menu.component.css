@@ -1,0 +1,23 @@
+.wrap {
+    font-size: medium;   
+    color: #444444; 
+}
+
+.wrap table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr td {
+    padding: 5px;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+table.head tr td {
+    background: #eee;
+}
+
+.inner_table {
+    overflow-y: auto;
+}

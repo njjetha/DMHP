@@ -1,0 +1,54 @@
+<!--div class="card info-card">
+    <div class="card-header ">
+        <h6 class="font-weight-bold text-uppercase">{{CardName}}</h6>
+        <div class="d-flex d-lg-block d-xl-flex align-items-end">
+            <h6>Total cases: {{ totalCases}}</h6>
+            <--button (click)="onClickLoadChart()"></button-->
+<!--/div>
+    </div>
+    <div class="card-body">
+        <div #smallChart id="smallChart">
+        </div>
+    </div>
+</div-->
+
+<mat-card>
+    <mat-card-header style="height: 20px;">
+        <mat-card-title>
+            {{CardName}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            <h5><small>Total cases </small> {{ totalCases.toLocaleString()}}</h5>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="p-0">
+        <div #smallChart id="smallChart"></div>
+    </mat-card-content>
+</mat-card>
+
+
+<!--app-line-chart *ngIf="loadChart" [needAxis]="true" data="chartData"></app-line-chart-->
+
+<!--Modal content-->
+<!--div class="modal fade" id="lineModal">
+    <div class="modal-dialog">
+        <div class="modal-content"-->
+
+<!-- Modal Header -->
+<!--div class="modal-header">
+                <h1 class="modal-title">Data</h1>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div-->
+
+<!-- Modal body -->
+<!--div class="modal-body">
+                <div #smallChart id="smallChart" style="width: 800px;height: 800px;">
+                </div>
+            </div-->
+
+<!-- Modal footer -->
+<!--div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div-->

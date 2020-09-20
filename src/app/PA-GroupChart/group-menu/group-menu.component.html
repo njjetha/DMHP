@@ -1,0 +1,51 @@
+<mat-card style="padding-top: 4%;">
+    <mat-card-header>
+        <mat-card-title>
+            Comparison - Cases v Expense v Training
+        </mat-card-title>
+
+    </mat-card-header>
+    <div class="col mx-auto" style="width:150px">
+        <strong>Select Year</strong>
+        <select ngModel class="form-control" name="year" [(ngModel)]='year'
+        (ngModelChange)='onYearChange($event)'>
+          <option value=2018>2018</option>
+          <option value=2019>2019</option>
+        </select>
+      </div>
+    <mat-card-content>
+        <!--mat-card-subtitle><h6 style="text-align: center;">For Year : {{year}}</h6> </mat-card-subtitle-->
+
+        <div class="p-5 border border">
+            <div class="row">
+                <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                    <app-group-pie-chart [chartService]="pieChartCasesService"></app-group-pie-chart>
+                </div>
+                <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                    <app-group-pie-chart [chartService]="pieChartExpenseService"></app-group-pie-chart>
+                </div>
+                <div class="col-md-4 col-xs-4 col-lg-4 col-sm-4 ">
+                    <app-group-pie-chart [chartService]="pieChartTrainingService"></app-group-pie-chart>
+                </div>
+            </div>
+            <div class="pt-5 ">
+                <app-grouped-bar-chart [chartService]="menuBarService"></app-grouped-bar-chart>
+                Sort by
+                <mat-button-toggle-group #sortGroup="matButtonToggleGroup" [(value)]="toggleValue_Sort"
+                    (change)="onToggleChange_Sort(sortGroup.value)">
+                    <mat-button-toggle *ngFor="let item of toggleOptions_Sort;" [value]="item">
+                        {{item}}
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div>
+                <div class="p-3" style="text-align:right">
+                    <mat-slide-toggle color="primary" [(ngModel)]="checkedCumulative" (change)="onCumulativeChange()">
+                        Cumulative
+                    </mat-slide-toggle>
+                </div>
+                <app-group-line-chart [chartService]="menuLineService"></app-group-line-chart>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
