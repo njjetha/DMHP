@@ -7,7 +7,7 @@ import { OperationalHomeComponent } from './Operational_Dashboard/operational-ho
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule,
-   MatRadioModule, MatSlideToggleModule, MatSliderModule, MatDialogModule } from '@angular/material';
+   MatRadioModule, MatSlideToggleModule, MatSliderModule, MatDialogModule, MatSnackBar } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //import { DistrictMapComponentComponent } from './Operational_Dashboard/District/district-map-component/district-map-component.component';
@@ -26,7 +26,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { TalukaMainMenuComponent } from './Operational_Dashboard/District/Taluka/taluka-main-menu/taluka-main-menu.component';
 import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 
@@ -65,6 +65,7 @@ import { GroupedPieChartTainingService } from './PA-GroupChart/Service/grouped-p
 import { GroupedPieChartExpenseService } from './PA-GroupChart/Service/grouped-pie-chart-expense.service';
 import { PatientCountCardService } from './Operational_Dashboard/Services/patient-count.card.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MaterialModule } from './material-module';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -77,7 +78,6 @@ export function tokenGetter() {
    // DistrictMapComponentComponent,
     //DistrictMapDetailsComponent,
     //DistrictMapDialogComponent,
-
     CardComponent,
     LineChartComponent,
 
@@ -104,24 +104,26 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatInputModule,
+    // MatDatepickerModule,
+    // MatFormFieldModule,
+    // MatNativeDateModule,
+    // MatInputModule,
     FormsModule,
-    ReactiveFormsModule, 
-    MatRadioModule,
-    MatSlideToggleModule,
-    MatSliderModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatSelectModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatTabsModule,
+    ReactiveFormsModule,
+    // MatRadioModule,
+    // MatSlideToggleModule,
+    // MatSliderModule,
+    // MatDialogModule,
+    // MatButtonModule,
+    // MatButtonToggleModule,
+    // MatCardModule,
+    // MatExpansionModule,
+    // MatSelectModule,
+    // MatIconModule,
+    // MatSidenavModule,
+    // MatTabsModule,
+    // MatSnackBar,
+    MaterialModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,

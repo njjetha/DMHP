@@ -5,6 +5,8 @@ import { GroupedPieChartCasesService } from './grouped-pie-chart-cases.service';
 import { GroupedPieChartExpenseService } from './grouped-pie-chart-expense.service';
 import { GroupedPieChartTainingService } from './grouped-pie-chart-training.service';
 import { environment } from '../../../environments/environment';
+import { MatSnackBar } from '@angular/material';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Injectable({
@@ -44,7 +46,7 @@ export class GroupedBarChartService {
   private sortOptions: string[];
   private sortKey: string;
 
-  constructor(protected http: HttpClient,
+  constructor(protected http: HttpClient, private snackBar: MatSnackBar, private authS: AuthService,
               protected pieChartCasesService: GroupedPieChartCasesService,
               protected pieChartExpenseService: GroupedPieChartExpenseService,
               protected pieChartTrainingService: GroupedPieChartTainingService) {
@@ -137,6 +139,13 @@ export class GroupedBarChartService {
                 this.updateData();
               });
           });
+        }, (error) => {
+          if (error.status === 401) {
+            this.snackBar.open('Session Expired, Please Re-Login', 'x', {
+              duration: 5000
+            });
+            this.authS.logout();
+          }
       });
   }
 

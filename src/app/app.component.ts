@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'DMHP';
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService) { }
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['login']);
   }
 }
