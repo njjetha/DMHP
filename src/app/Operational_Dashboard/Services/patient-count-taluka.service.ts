@@ -36,7 +36,7 @@ export class PatientCountTalukaService extends PatientCountService {
     this.setDataURL(dataURL);
 
     const keys = ['Alcohol Cases', 'Suicide Cases', 'SMD Cases', 'CMD Cases',
-     'Psychiatric Disorder Cases', 'O1 Cases', 'O2 Cases', 'O3 Cases', 'O4 Cases', 'O5 Cases'];
+     'Psychiatric Disorder Cases', 'Epilepsy Cases', 'Developmental Disorder Cases', 'Behavioural DIsorder Cases', 'Emotional Disorder Cases', 'Dementia Cases',  'Other Cases'];
     this.setKeys(keys);
     this.districtName = '';
     this.setLabels('Taluka', 'Cases');

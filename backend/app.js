@@ -550,11 +550,13 @@ var cases = ` (sum(old_alcohal_male + old_alcohal_female + new_alcohal_female + 
 (sum(old_smd_male + old_smd_female + new_smd_male + new_smd_female)) as 'SMD Cases',
 (sum(old_cmd_male + old_cmd_female + new_cmd_male + new_cmd_female)) as 'CMD Cases',
 (sum(old_psychiatricdisorders_male + old_psychiatricdisorders_female + new_psychiatricdisorders_male + new_psychiatricdisorders_female)) as 'Psychiatric Disorder Cases',
-(sum(old_o1_male + old_o1_female + new_o1_male + new_o1_female)) as 'O1 Cases',
-(sum(old_o2_male + old_o2_female + new_o2_male + new_o2_female)) as 'O2 Cases',
-(sum(old_o3_male + old_o3_female + new_o3_male + new_o3_female)) as 'O3 Cases',
-(sum(old_o4_male + old_o4_female + new_o4_male + new_o4_female)) as 'O4 Cases',
-(sum(old_o5_male + old_o5_female + new_o5_male + new_o5_female)) as 'O5 Cases' `;
+(sum(old_o1_male + old_o1_female + new_o1_male + new_o1_female)) as 'Epilepsy Cases',
+(sum(old_o2_male + old_o2_female + new_o2_male + new_o2_female)) as 'Developmental Disorder Cases',
+(sum(old_o3_male + old_o3_female + new_o3_male + new_o3_female)) as 'Behavioural DIsorder Cases',
+(sum(old_o4_male + old_o4_female + new_o4_male + new_o4_female)) as 'Emotional Disorder Cases',
+(sum(old_o5_male + old_o5_female + new_o5_male + new_o5_female)) as 'Dementia Cases',
+(sum(old_o6_male + old_o6_female + new_o6_male + new_o6_female)) as 'Other Cases' `;
+
 
 app.post("/getDataAllDistrictMonthly", (req, res) => {
   var year = req.body.year;

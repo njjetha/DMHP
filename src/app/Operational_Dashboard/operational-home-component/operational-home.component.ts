@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewInit, Input} from '@angular/core';
-import { CardLineChartService } from '../Services/line-chart.card.service';
 import { ExpenseCountDistrictService } from '../Services/expense-count-district.service';
 import { PatientCountDistrictService } from '../Services/patient-count-district.service';
 import html2canvas from 'html2canvas';
-import * as FileSaver from 'file-saver';
 import { FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-operational-home',
@@ -19,7 +16,7 @@ export class OperationalHomeComponent implements OnInit, AfterViewInit {
   public chartData;
   public events = [];
   @Input()
-  public sideNavOption= 1;
+  public sideNavOption = 1;
   @Input()
   public year: number;
 
@@ -29,6 +26,7 @@ export class OperationalHomeComponent implements OnInit, AfterViewInit {
               public districtService: PatientCountDistrictService) { }
 
   ngOnInit() {
+    console.clear();
     this.sideNavOption = this.route.snapshot.params.sideNavOption;
     this.year = this.route.snapshot.params.year;
   }

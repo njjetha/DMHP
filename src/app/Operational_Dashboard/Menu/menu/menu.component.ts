@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   public monthName = "January";
   public granularChoosen: number = 0; // Granualirity : 0: Annual , 1 : Month , 2: Quarter
   public checkedNormalize: boolean = false;
-  public columns: string[] = [];// = ["Alcohol Cases", "Suicide Cases", "SMD Cases", "CMD Cases", "Psychiatric Disorder Cases", "O1 Cases", "O2 Cases", "O3 Cases", "O4 Cases", "O5 Cases"];
+  public columns: string[] = [];// = ["Alcohol Cases", "Suicide Cases", "SMD Cases", "CMD Cases", "Psychiatric Disorder Cases", "Epilepsy Cases", "Developmental Disorder Cases", "Behavioural DIsorder Cases", "Emotional Disorder Cases", "Dementia Cases",  "Other Cases"];
   public toggleOptions_Sort: string[];
   public toggleValue_Sort: number;
   public toggleOptions_Granularity: string[] = ["Annual", "Month", "Quarter"];
