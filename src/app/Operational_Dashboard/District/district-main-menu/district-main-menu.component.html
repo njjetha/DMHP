@@ -23,7 +23,7 @@
             <app-card [cardService]="patientCountCardService" CardName="SMD Cases" color="#8da0cb" [year]="year"></app-card>
         </div>
         <div class="col-sm-6 col-lg-3 mg-t-10 mg-sm-t-0">
-            <app-card [cardService]="patientCountCardService" CardName="Suicide Cases" color="#e78ac3" [year]="year"></app-card>
+            <app-card [cardService]="patientCountCardService" CardName="Suicide Attempt Cases" color="#e78ac3" [year]="year"></app-card>
         </div>
     </div>
     <app-line-chart *ngIf="lineChartLoaded" (close)="onLineChartClose()" [data]="chartData" ></app-line-chart>

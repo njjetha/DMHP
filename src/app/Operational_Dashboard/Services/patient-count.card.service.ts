@@ -15,7 +15,7 @@ export class PatientCountCardService {
         'Alcohol Cases': new Subject<any>(),
         'SMD Cases'    : new Subject<any>(),
         'CMD Cases'    : new Subject<any>(),
-        'Suicide Cases' : new Subject<any>(),
+        'Suicide Attempt Cases' : new Subject<any>(),
     };
 
     constructor(private http: HttpClient, private snackBar: MatSnackBar, private authS: AuthService) {
@@ -60,7 +60,7 @@ export class PatientCountCardService {
                     this.cardData = responseData;
                     this.cardDataObservable[request.cardName].next(responseData);
                 });
-        } else if (request.cardName == 'Suicide Cases') {
+        } else if (request.cardName == 'Suicide Attempt Cases') {
             this.http.post<any>(environment.backendIP + '/getSuicideCasesPerYear', postData)
                 .subscribe(responseData => {
                     this.cardData = responseData;

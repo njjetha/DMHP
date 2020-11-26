@@ -78,7 +78,7 @@ export class GroupedBarChartService {
     };
 
     this.dataColoumn = {
-      cases: ['Alcohol Cases', 'Suicide Cases', 'SMD Cases', 'CMD Cases', 'Psychiatric Disorder Cases',
+      cases: ['Alcohol Cases', 'Suicide Attempt Cases', 'SMD Cases', 'CMD Cases', 'Psychiatric Disorder Cases',
        'Epilepsy Cases', 'Developmental Disorder Cases', 'Behavioural DIsorder Cases', 'Emotional Disorder Cases', 'Dementia Cases',  'Other Cases'],
       training: ['ANM/Health Workers',
         'ASHA',

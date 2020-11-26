@@ -546,7 +546,7 @@ app.get("/getDistrictData", (req, res) => {
  *  
  * ****************************************************************************************************************/
 var cases = ` (sum(old_alcohal_male + old_alcohal_female + new_alcohal_female + new_alcohal_male)) as 'Alcohol Cases', 
-(sum(old_male_suicidecases + new_male_suicidecases + old_female_suicidecases + new_female_suicidecases)) as 'Suicide Cases',
+(sum(old_male_suicidecases + new_male_suicidecases + old_female_suicidecases + new_female_suicidecases)) as 'Suicide Attempt Cases',
 (sum(old_smd_male + old_smd_female + new_smd_male + new_smd_female)) as 'SMD Cases',
 (sum(old_cmd_male + old_cmd_female + new_cmd_male + new_cmd_female)) as 'CMD Cases',
 (sum(old_psychiatricdisorders_male + old_psychiatricdisorders_female + new_psychiatricdisorders_male + new_psychiatricdisorders_female)) as 'Psychiatric Disorder Cases',

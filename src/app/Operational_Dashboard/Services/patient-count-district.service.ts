@@ -27,8 +27,9 @@ export class PatientCountDistrictService extends PatientCountService {
     };
     this.setDataURL(dataURL);
 
-    const keys = ['Alcohol Cases', 'Suicide Cases', 'SMD Cases', 'CMD Cases', 'Psychiatric Disorder Cases',
-     'Epilepsy Cases', 'Developmental Disorder Cases', 'Behavioural DIsorder Cases', 'Emotional Disorder Cases', 'Dementia Cases',  'Other Cases'];
+    const keys = ['Alcohol Cases', 'Suicide Attempt Cases', 'SMD Cases', 'CMD Cases', 'Psychiatric Disorder Cases',
+     'Epilepsy Cases', 'Developmental Disorder Cases', 'Behavioural DIsorder Cases', 'Emotional Disorder Cases',
+      'Dementia Cases',  'Other Cases'];
     this.setKeys(keys);
     this.setLabels('District', 'Cases');
     this.setxColumn('District');

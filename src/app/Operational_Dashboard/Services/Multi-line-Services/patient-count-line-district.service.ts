@@ -21,7 +21,7 @@ export class PatientCountLineDistrictService extends LineService {
     };
     this.setDataURL(dataURL);
 
-    let keys = ["Alcohol Cases", "Suicide Cases", "SMD Cases", "CMD Cases", "Psychiatric Disorder Cases", "Epilepsy Cases", "Developmental Disorder Cases", "Behavioural DIsorder Cases", "Emotional Disorder Cases", "Dementia Cases",  "Other Cases"];
+    let keys = ["Alcohol Cases", "Suicide Attempt Cases", "SMD Cases", "CMD Cases", "Psychiatric Disorder Cases", "Epilepsy Cases", "Developmental Disorder Cases", "Behavioural DIsorder Cases", "Emotional Disorder Cases", "Dementia Cases",  "Other Cases"];
     this.setKeys(keys);
     
     this.setLabels("Month", "Cases");

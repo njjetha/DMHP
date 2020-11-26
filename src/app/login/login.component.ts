@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         result => {
             
           this.error = false;
-          this.router.navigate(['home/operations/2018/1'])
+          this.router.navigate(['home/operations/2020/1'])
         },
         err => {
             
