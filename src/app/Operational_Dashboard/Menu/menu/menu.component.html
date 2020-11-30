@@ -79,13 +79,17 @@
                     <strong *ngIf="granularChoosen==2" class="pl-3">Qaurter - {{quarterChoosen}}</strong>
                     <app-stacked-bar-chart [chartService]="menuService">
                     </app-stacked-bar-chart>
-                    Sort by
-                    <mat-button-toggle-group #sortGroup="matButtonToggleGroup" [(value)]="toggleValue_Sort"
+                    <div class="p-4">
+                        Sort by
+                        <mat-button-toggle-group #sortGroup="matButtonToggleGroup" [(value)]="toggleValue_Sort"
                         (change)="onToggleChange_Sort(sortGroup.value)">
                         <mat-button-toggle *ngFor="let item of toggleOptions_Sort;let in = index" [value]="in">
                             {{item}}
                         </mat-button-toggle>
                     </mat-button-toggle-group>
+                    </div>
+                   
+                   
 
                 </div>
             </div>
