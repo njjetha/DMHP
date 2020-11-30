@@ -6,6 +6,8 @@
     </div>
     <div><button class="btn btn-light side-nav-button" (click)="onSideNavClick(2)">Expense </button></div>
     <div><button class="btn btn-light side-nav-button" (click)="onSideNavClick(3)">Training </button></div>
+    <div><button class="btn btn-light side-nav-button" (click)="onSideNavClick(4)">Analytics </button></div>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <p><button mat-button (click)="sidenav.toggle()"><mat-icon>dehaze</mat-icon> Menu</button></p>
@@ -53,6 +55,9 @@
     </div>
     <div *ngIf="sideNavOption==3" id="Training" class="container-fluid p-3">
       <app-district-training-main-menu [year]="year"></app-district-training-main-menu>
+    </div>
+    <div *ngIf="sideNavOption==4" id="Analytics" class="container-fluid p-3">
+      <app-analytics></app-analytics>
     </div>
 
   </mat-sidenav-content>

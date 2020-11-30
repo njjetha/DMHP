@@ -66,6 +66,7 @@ import { GroupedPieChartExpenseService } from './PA-GroupChart/Service/grouped-p
 import { PatientCountCardService } from './Operational_Dashboard/Services/patient-count.card.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MaterialModule } from './material-module';
+import { AnalyticsComponent } from './analytics/analytics.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -97,7 +98,8 @@ export function tokenGetter() {
     GroupedBarChartComponent,
     GroupMenuComponent,
     GroupLineChartComponent,
-    GroupPieChartComponent
+    GroupPieChartComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
