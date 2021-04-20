@@ -126,6 +126,7 @@ export function tokenGetter() {
     // MatTabsModule,
     // MatSnackBar,
     MaterialModule,
+    ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,

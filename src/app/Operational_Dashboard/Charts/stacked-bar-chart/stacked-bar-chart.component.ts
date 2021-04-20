@@ -58,8 +58,11 @@ export class StackedBarChartComponent implements OnInit {
   @Output() public chartLoaded: EventEmitter<any> = new EventEmitter();
 
   constructor() {
-    this.checkedPopulationLine = false;
-    this.populationDisabled = false;
+  /*   this.checkedPopulationLine = false;
+    this.populationDisabled = false; */
+// gourav
+    this.checkedPopulationLine = true;
+    this.populationDisabled = true;
   }
 
   ngOnInit() {
@@ -69,9 +72,9 @@ export class StackedBarChartComponent implements OnInit {
       this.xColumn = newParameter.xColumn
       this.dataType = newParameter.dataType;
       this.keys = newParameter.keys;
-      this.populationDisabled = (this.xColumn == "Taluka") ? true : false;//newParameter.populationDisabled;
+     // this.populationDisabled = (this.xColumn == "Taluka") ? true : false;//newParameter.populationDisabled;
       this.createChart();
-      if (this.checkedPopulationLine) this.createPopulationLine();
+     // if (this.checkedPopulationLine) this.createPopulationLine();
     });
 
     this.chartService.getDataListener().subscribe((newData) => {
@@ -81,11 +84,11 @@ export class StackedBarChartComponent implements OnInit {
       this.data = newData.data;
       this.normalize = newData.normalise;
       this.updateChart();
-      if (this.checkedPopulationLine) this.updatePopulationLine();
+      //if (this.checkedPopulationLine) this.updatePopulationLine();
     });
   }
 
-  onPopulationLineChange() {
+ /*  onPopulationLineChange() {
     if (this.checkedPopulationLine) {
       this.createPopulationLine();
       this.updatePopulationLine();
@@ -96,7 +99,7 @@ export class StackedBarChartComponent implements OnInit {
       this.svg.selectAll(".y1-axis").remove()
       this.svg.selectAll(".y1-text").remove()
     }
-  }
+  } */
 
   // Set up the chart
   createChart() {
@@ -172,13 +175,13 @@ export class StackedBarChartComponent implements OnInit {
         let keys = [...this.currkeys];
         let a = (this.normalize) ? "%" : "";
         let ret = "<div style='text-align: center;font-size: 19px;'>" + data[this.xColumn] + "<br>"
-        if (!this.populationDisabled)
-          ret += "<small> (Population  " + data["Population"].toLocaleString() + ")</small>";
+        /* if (!this.populationDisabled)
+          ret += "<small> (Population  " + data["Population"].toLocaleString() + ")</small>"; */
         ret += "</div><br><table style='width:200px;font-size: 17px;'><tbody>";
         for (let key of keys.reverse()) {
           ret += "<tr style='color:" + this.z(key) + ";'><td>" + key + " </td><td style='text-align:right; padding-left:15px;'> " + data[key].toLocaleString() + a + "</td></tr>"
         }
-        ret += "<tr  style='font-size: 19px;'><td>Total</td><td style='text-align:right; padding-left:15px;'> " + data["Total"].toLocaleString() + a + "</td></tr>"
+        ret += "<tr  style='font-size: 19px;'><td>TotalCases</td><td style='text-align:right; padding-left:15px;'> " + data["TotalCases"].toLocaleString() + a + "</td></tr>"
         ret += "</tbody></table>";
         return ret;
       });
@@ -251,7 +254,7 @@ export class StackedBarChartComponent implements OnInit {
 
     // Set X & Y domains
     let xDomain = this.data.map(d => d[this.xColumn]);
-    let yDomain = [0, d3.max(this.data, d => (d.Total == 0) ? 0.1 : d.Total)];
+    let yDomain = [0, d3.max(this.data, d => (d.TotalCases == 0) ? 0.1 : d.TotalCases)];
 
     // Set x scale
     this.x = d3.scaleBand()
@@ -342,11 +345,11 @@ export class StackedBarChartComponent implements OnInit {
       .merge(text)
       .transition().duration(this.speed)
       .attr("transform", (d) => {
-        return ("translate(" + this.x(d[this.xColumn]) + "," + this.y(d.Total) + ")rotate(-90)")
+        return ("translate(" + this.x(d[this.xColumn]) + "," + this.y(d.TotalCases) + ")rotate(-90)")
       })
       .attr("y", this.x.bandwidth() / 2 + 3)
       .attr("x", 30)
-      .text(d => (this.normalize) ? d.Total + " %" : d.Total.toLocaleString());
+      .text(d => (this.normalize) ? d.TotalCases + " %" : d.TotalCases.toLocaleString());
   }
 
   updatePopulationLine() {

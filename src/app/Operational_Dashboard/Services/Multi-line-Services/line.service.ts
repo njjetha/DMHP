@@ -57,6 +57,7 @@ export abstract class LineService {
         this.updateData();
       });
   }
+  
 
   calculateTotal(resMonthlyData) {
     if (resMonthlyData.length == 0) {

@@ -27,11 +27,16 @@ export const START_YEAR = 2018;
 @Injectable()
 export abstract class PatientCountService {
 
+
+  private flag:boolean=false;                // updated by gourav for clicking on side panel diseases to hide them
+
+
   constructor(protected http: HttpClient) {
     this.initialize();
     this.port = 3000;
     this.onLegendClick.subscribe((d) => {
       this.columnMap.set(d, !this.columnMap.get(d));
+      this.flag=true;
       this.updateData();
     });
 
@@ -80,14 +85,14 @@ export abstract class PatientCountService {
     this.granularity = Granualirity.ANNUAL;
     this.normalize = Normalise.NO;
     this.sortOption = SortOption.RANKWISE;
-    this.sortKey = 'Total';
+    this.sortKey = 'TotalCases';              // updated by gourav converted Total to total cases
     this.year = 2018;
     this.month = 1;
     this.quarter = 1;
     this.normalizeDisabled = false;
   }
 
-  getYearDataFromServer(postData: { year: number, districtId?: number }) {
+ getYearDataFromServer(postData: { year: number, districtId?: number }) {
     this.http.post<any>(environment.backendIP + '/' + this.dataURL.annual, postData)
       .subscribe(resAnnualData => {
 
@@ -108,12 +113,25 @@ export abstract class PatientCountService {
       });
   }
 
+  /* getYearDataFromServer(postData: { year: number, districtId?: number }) {
+    this.http.post<any>(environment.backendIP + '/' + this.dataURL.annual, postData)
+      .subscribe(resAnnualData => {
+        this.data = {
+          annualData: resAnnualData,
+          monthlyData: null,
+          quarterlyData: null
+        };
+        this.updateData();
+       
+      });
+  } */
   updateDataAsPerGranularity() {
     switch (this.granularity) {
       case Granualirity.ANNUAL: {
         this.currData = this.data.annualData;
         break;
-      }
+      } 
+      
       case Granualirity.MONTHWISE: {
         this.currData = (this.data.monthlyData[this.month] == null) ? [] : this.data.monthlyData[this.month];
         break;
@@ -125,7 +143,7 @@ export abstract class PatientCountService {
     }
     this.currData = JSON.parse(JSON.stringify(this.currData));
   }
-
+                             
   normalizeData() {
     if (this.normalize == Normalise.YES) {
       const wrtColumn = 'Population';
@@ -158,17 +176,73 @@ export abstract class PatientCountService {
       for (const colName of this.currkeys) {
         tempTotal += d[colName];
       }
-      d.Total = Number(tempTotal.toFixed(2));
+      d.TotalCases = Number(tempTotal.toFixed(2));
     }
   }
 
+  fillDistrict(){
+    
+      let district_map = new Map();
+
+      district_map.set(1,"Bagalkote");
+      district_map.set(2,"Bangalore Rural");
+      district_map.set(3,"Bangalore Urban");
+      district_map.set(12,"Belgaum");
+      district_map.set(13,"Bellary");
+      district_map.set(15,"Bidar");
+      district_map.set(16,"Bijapur");
+      district_map.set(17,"Chamrajnagar");
+      district_map.set(18,"Chikkaballapur");
+      district_map.set(19,"Chikmagalur");
+      district_map.set(20,"Chitradurga");
+      district_map.set(21,"Dakshina");
+      district_map.set(22,"Kannada");
+      district_map.set(23,"Davanagere");
+      
+      district_map.set(25,"Dharwad");
+      district_map.set(27,"Gadag");
+      district_map.set(28,"Gulbarga");
+      district_map.set(29,"Hassan");
+      district_map.set(30,"Haveri");
+      district_map.set(31,"Kodagu");
+      district_map.set(32,"Kolar");
+      district_map.set(33,"Koppal");
+      district_map.set(34,"Mandya");
+      district_map.set(35,"Mysore");
+      district_map.set(37,"Raichur");
+      
+      district_map.set(38,"Ramanagar");
+      district_map.set(39,"Shimoga");
+      district_map.set(41,"Tumkur");
+      district_map.set(42,"Udupi");
+      district_map.set(43,"Uttara Kannada");
+      district_map.set(44,"Yadgir");
+      district_map.set(45,"Bbmp");
+      
+      
+
+      for (const d of this.currData) {
+
+        d.District=district_map.get(d.DistrictId);
+
+      }
+      
+  }
+
+
   updateData() {
-    this.updateDataAsPerGranularity();
-    this.normalizeData();
-    this.calculateTotal();
-    this.sortData();
+   this.updateDataAsPerGranularity();
+     this.normalizeData();
+    //this.calculateTotal();
+    this.sortData(); 
+    this.fillDistrict();
+
+    if(this.flag==false)
+      { this.currkeys = this.keys;  }       // added by gourav
+                         
     const newData = {
-      normalise: (this.normalize == Normalise.YES) ? true : false,
+      normalise: (this.normalize == Normalise.YES) ? true : false,     // updated by gourav
+     // normalise:false,
       currkeys: this.currkeys,
       data: this.currData
     };
@@ -198,11 +272,11 @@ export abstract class PatientCountService {
         break;
       }
       case SortOption.RANKWISE: {
-        this.sortKey = 'Total';
+        this.sortKey = 'TotalCases';                   // updated by gourav coverted Total to Totalcases
         break;
       }
       default : {
-        this.sortKey = 'Population';
+        this.sortKey = 'DistrictId';        
         break;
       }
     }

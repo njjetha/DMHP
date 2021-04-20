@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
+import { ReactiveFormsModule,FormBuilder } from '@angular/forms';
+
 import { Normalise, START_YEAR } from '../../Services/patient-count.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import * as XLSX from 'xlsx';
@@ -28,9 +30,23 @@ export class MenuComponent implements OnInit {
   public data: any;
   public dataType;
   public yearChoosen;
+  
+
+ 
+
+  
+
+
+
+  
+
 
   constructor(public dialog: MatDialog) { }
+ 
 
+
+  
+  
   ngOnInit() {
     this.yearChoosen = this.menuService.getYear();
     this.granularChoosen = this.menuService.getGranularity();
@@ -46,6 +62,8 @@ export class MenuComponent implements OnInit {
       this.columns = d.currkeys;
       this.data = d.data;
     })
+    
+  
   }
 
   onMonthChange(event: any) {
